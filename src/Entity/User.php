@@ -54,6 +54,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->commandes = new ArrayCollection();
         $this->date_enregistrement = new \DateTimeImmutable();
+        $this->statut = 1;
     }
 
     public function __toString()

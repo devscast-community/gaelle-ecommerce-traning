@@ -23,7 +23,7 @@
                         <td>{{ commande.id }}</td>
                         <td>{{ commande.quantite }}</td>
                         <td>{{ commande.montant }}</td>
-                        <td>{{ commande.etat }}</td>
+                        <td>{{ commande.etat | trans }}</td>
                         <td>{{ commande.dateEnregistrement ? commande.dateEnregistrement|date('Y-m-d H:i:s') : '' }}</td>
                         <td>
                             <a href="{{ path('app_commande_show', {'id': commande.id}) }}">show</a>

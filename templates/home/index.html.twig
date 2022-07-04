@@ -9,12 +9,25 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Tous nos produits</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/bernard-ng/dev/mentoring/gaelle-projet5/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/bernard-ng/dev/mentoring/gaelle-projet5/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
+    <div class="row">
+        {% for produit in produits %}
+            <div class="col-sm-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ vich_uploader_asset(produit, 'fichier') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ produit.titre }}</h5>
+                        <p class="card-text">{{ produit.description }}</p>
+                        {% if app.user %}
+                            <form action="{{ path('app_panier_add', {id: produit.id}) }}" method="post" class="d-inline-block">
+                                <button class="btn btn-primary">Ajouter au panier</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

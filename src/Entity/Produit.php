@@ -6,12 +6,14 @@ use App\Repository\ProduitRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Serializer\Annotation\Ignore;
+use Symfony\Component\Serializer\SerializerInterface;
 use Vich\UploaderBundle\Mapping\Annotation\Uploadable;
 use Vich\UploaderBundle\Mapping\Annotation\UploadableField;
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
 #[Uploadable]
-class Produit
+class Produit implements SerializerInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -37,6 +39,7 @@ class Produit
     private ?string $photo = null;
 
     #[UploadableField(mapping: 'produits', fileNameProperty: 'photo')]
+    #[Ignore]
     private ?File $fichier = null;
 
     #[ORM\Column(type: 'float')]
@@ -184,5 +187,15 @@ class Produit
         $this->date_enregistrement = $date_enregistrement;
 
         return $this;
+    }
+
+    public function serialize(mixed $data, string $format, array $context = []): string
+    {
+        // TODO: Implement serialize() method.
+    }
+
+    public function deserialize(mixed $data, string $type, string $format, array $context = []): mixed
+    {
+        // TODO: Implement deserialize() method.
     }
 }
