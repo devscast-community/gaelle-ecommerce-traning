@@ -34,7 +34,7 @@
                         <td>{{ produit.taille }}</td>
                         <td>{{ produit.collection }}</td>
                         <td>
-                            <img width="300" height="auto" src="{{ vich_uploader_asset(produit, 'fichier') }}" alt="">
+                            <img height="auto" src="{{ produit.photo }}" alt="">
                         </td>
                         <td>{{ produit.prix }}</td>
                         <td>{{ produit.stock }}</td>
