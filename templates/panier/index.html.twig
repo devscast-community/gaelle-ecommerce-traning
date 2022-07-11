@@ -28,7 +28,7 @@
                         <td style="background: {{ produit.couleur }}">&nbsp;</td>
                         <td>{{ produit.taille }}</td>
                         <td>
-                            <img width="300" height="auto" src="{{ vich_uploader_asset(produit, 'fichier') }}" alt="">
+                            <img width="300" height="auto" src="{{ produit.photo }}" alt="">
                         </td>
                         <td>{{ produit.prix }}</td>
                         <td>

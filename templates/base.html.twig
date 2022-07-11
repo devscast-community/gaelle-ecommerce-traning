@@ -22,35 +22,41 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ path('app_home') }}">Home</a>
+                    <a class="nav-link"  href="{{ path('app_home') }}">Home</a>
                 </li>
                 {% if not app.user %}
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ path('app_login') }}">Connexion</a>
+                        <a class="nav-link"  href="{{ path('app_login') }}">Connexion</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ path('app_register') }}">Inscription</a>
+                        <a class="nav-link"  href="{{ path('app_register') }}">Inscription</a>
                     </li>
                 {% else %}
                     {% if is_granted("ROLE_ADMIN", app.user) %}
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ path('app_user_index') }}">Membres</a>
+                            <a class="nav-link"  href="{{ path('app_user_index') }}">Membres</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ path('app_produit_index') }}">Produits</a>
+                            <a class="nav-link"  href="{{ path('app_produit_index') }}">Produits</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ path('app_commande_index') }}">Commandes</a>
+                            <a class="nav-link"  href="{{ path('app_commande_index') }}">Commandes</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ path('app_panier_index') }}">Mon panier</a>
+                            <a class="nav-link"  href="{{ path('app_panier_index') }}">Mon panier</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ path('app_compte') }}">Mon compte</a>
+                            <a class="nav-link"  href="{{ path('app_compte') }}">Mon compte</a>
                         </li>
                     {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link"  href="{{ path('app_logout') }}">Déconnexion</a>
+                    </li>
                 {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link"  href="{{ path('app_legal') }}">Mentions légales</a>
+                </li>
             </ul>
         </div>
     </div>
